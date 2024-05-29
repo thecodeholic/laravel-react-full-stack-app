@@ -35,7 +35,15 @@ const router = createBrowserRouter([
       },
       // {
       //   path: '/appointments',
-      //   element: <Appointments />
+      //   element: insert
+      // },
+      // {
+      //   path:'/appointments/new'
+      //   element: insert
+      // },
+      // {
+      //   path:'/appointments/:id'
+      //   element: insert
       // }
     ]
   },
