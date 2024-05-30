@@ -20,6 +20,23 @@ body {
     background-color: #f6f6f6;
 }
 
+.select-input {
+    outline: 0;
+    background: #ffffff;
+    width: 100%;
+    border: 2px solid #e6e6e6;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.select-input:focus {
+    border-color: #5b08a7;
+}
+
+
 input {
     outline: 0;
     background: #ffffff;

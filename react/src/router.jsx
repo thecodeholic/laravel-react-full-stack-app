@@ -7,6 +7,9 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
 import UserForm from "./views/UserForm";
+import Appointments from "./views/Appointments.jsx";
+import AppointmentForm from "./views/AppointmentForm.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -33,18 +36,18 @@ const router = createBrowserRouter([
         path: '/users/:id',
         element: <UserForm key="userUpdate" />
       },
-      // {
-      //   path: '/appointments',
-      //   element: insert
-      // },
-      // {
-      //   path:'/appointments/new'
-      //   element: insert
-      // },
-      // {
-      //   path:'/appointments/:id'
-      //   element: insert
-      // }
+      {
+        path: '/appointments',
+        element: <Appointments />
+      },
+      {
+        path:'/appointments/new',
+        element: <AppointmentForm  key="appointmentCreate" />
+      },
+      {
+        path:'/appointments/:id',
+        element: <AppointmentForm  key="appointmentUpdate" />
+      }
     ]
   },
   {
