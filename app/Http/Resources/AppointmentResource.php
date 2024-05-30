@@ -18,8 +18,8 @@ class AppointmentResource extends JsonResource
         return [
             'id' => $this->id,
             'information' => $this->information,
-            'appointment_time' => $this->time->format('d-m-Y H:i'), // Format datetime
-            'appointment_type' => $this->type, // Use specific naming for clarity
+            'time' => $this->time->format('d-m-Y H:i'), // Format datetime
+            'type' => $this->type, // Use specific naming for clarity
         ];
     }
 }
