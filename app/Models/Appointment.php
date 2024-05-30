@@ -15,4 +15,9 @@ class Appointment extends Model
         'time' => 'datetime',
         'type' => 'string',
     ];
+
+    public function customers(){
+        return $this->belongsToMany(Customer::class, 'customer_appointment');
+    }
+
 }

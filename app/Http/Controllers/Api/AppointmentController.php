@@ -7,6 +7,7 @@ use App\Models\Appointment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
+use App\Models\Customer;
 
 class AppointmentController extends Controller
 {
@@ -31,7 +32,13 @@ class AppointmentController extends Controller
     public function store(StoreAppointmentRequest $request)
     {
         $data = $request->validated();
+        $customer = Customer::firstOrCreate(
+            ['phone' => $data['customer_phone']],
+            ['name' => $data['customer_name']]
+        );
+        unset($data['customer_phone'], $data['customer_name']);
         $appointment = Appointment::query()->create($data);
+        $customer->appointments()->attach($appointment->id);
         return response (new AppointmentResource($appointment), status:201);
     }
 
@@ -43,6 +50,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
+
         return new AppointmentResource($appointment);
     }
 

@@ -26,7 +26,9 @@ class StoreAppointmentRequest extends FormRequest
         return [
             'information' =>'required|string|max:255',
             'time' => 'required|date_format:d-m-Y H:i',
-            'type' => 'required|in:fitting,new_customer,last_fitting'
+            'type' => 'required|in:fitting,new_customer,last_fitting',
+            'customer_name' => 'required|string|max:255',
+            'customer_phone' => 'required|string|max:255',
         ];
     }
 }
