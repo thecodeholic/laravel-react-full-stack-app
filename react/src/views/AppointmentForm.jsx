@@ -13,7 +13,7 @@ export default function AppointmentForm() {
     time: "",
     type: "",
     customer_name: "",
-    customer_phone:""
+    customer_phone: ""
   });
   const [errors, setErrors] = useState(null);
   const { setNotification } = useStateContext();
@@ -71,8 +71,13 @@ export default function AppointmentForm() {
         .then(({ data }) => {
           setLoading(false);
           console.log(data);
-          data.time = toDateTimeLocal(data.time);
-          setAppointment(data); // Ensure the data is properly set in the state
+          const appointmentData = {
+            ...data,
+            time: toDateTimeLocal(data.time),
+            customer_name: data.customers[0].name,
+            customer_phone: data.customers[0].phone
+          };
+          setAppointment(appointmentData); // Ensure the data is properly set in the state
         })
         .catch(() => {
           setLoading(false);
@@ -100,11 +105,15 @@ export default function AppointmentForm() {
               value={appointment.customer_name || ""}
               onChange={ev => setAppointment({ ...appointment, customer_name: ev.target.value })}
               placeholder="Customer Name"
+              readOnly={!!id}
+              className="read-only-input"
             />
             <input
               value={appointment.customer_phone || ""}
               onChange={ev => setAppointment({ ...appointment, customer_phone: ev.target.value })}
               placeholder="Customer Phone"
+              readOnly={!!id}
+              className="read-only-input"
             />
             <input
               type="datetime-local"

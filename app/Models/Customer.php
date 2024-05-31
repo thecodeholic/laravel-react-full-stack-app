@@ -9,7 +9,7 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['phone', 'name'];
+    protected $fillable = ['phone', 'name','instagram', 'status' ];
 
     public function appointments(){
         return $this->belongsToMany(Appointment::class, 'customers_appointments');

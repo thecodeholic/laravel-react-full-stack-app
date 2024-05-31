@@ -51,11 +51,13 @@ export default function Appointments() {
         <table>
           <thead>
           <tr>
-          <th>Id</th>
-          <th>Time</th>
-          <th>Information</th>
-          <th>Type</th>
-          <th>Actions</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Id</th>
+            <th>Time</th>
+            <th>Information</th>
+            <th>Type</th>
+            <th>Actions</th>
           </tr>
           </thead>
           {loading && <tbody>
@@ -67,14 +69,16 @@ export default function Appointments() {
           {!loading && <tbody>
           {appointments.map(appointment=>(
             <tr key={appointment.id}>
+              <td>{appointment.customers[0].name}</td>
+              <td>{appointment.customers[0].phone}</td>
               <td>{appointment.id}</td>
               <td>{appointment.time}</td>
               <td>{appointment.information}</td>
               <td>{appointment.type}</td>
               <td>
-                <Link to={'/appointments/'+appointment.id} className="btn-edit">Edit</Link>
+                <Link to={'/appointments/' + appointment.id} className="btn-edit">Edit</Link>
                 &nbsp;
-                <button onClick = {ev =>onDelete(appointment)}className="btn-delete">Delete</button>
+                <button onClick={ev => onDelete(appointment)} className="btn-delete">Delete</button>
               </td>
             </tr>
           ))}

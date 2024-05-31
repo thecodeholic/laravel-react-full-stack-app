@@ -36,6 +36,9 @@ body {
     border-color: #5b08a7;
 }
 
+.read-only-input {
+    cursor: not-allowed;
+}
 
 input {
     outline: 0;

@@ -3,7 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-class AppointmentResource extends JsonResource
+
+class CustomerResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -16,10 +17,8 @@ class AppointmentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'information' => $this->information,
-            'time' => $this->time->format('d-m-Y H:i'), // Format datetime
-            'type' => $this->type, // Use specific naming for clarity
-            'customers' => CustomerResource::collection($this->customers),
+            'name' => $this->name,
+            'phone' => $this->phone,
         ];
     }
 }

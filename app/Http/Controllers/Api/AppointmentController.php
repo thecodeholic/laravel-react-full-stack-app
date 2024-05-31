@@ -19,7 +19,7 @@ class AppointmentController extends Controller
     public function index()
     {
         return AppointmentResource::collection(
-            Appointment::query()->orderBy('time', 'desc')->paginate(10)
+            Appointment::with('customers')->orderBy('time', 'desc')->paginate(10)
         );
     }
 
@@ -62,7 +62,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        return new AppointmentResource($appointment);
+        return new AppointmentResource($appointment->load('customers'));
     }
 
     /**
@@ -75,7 +75,7 @@ class AppointmentController extends Controller
     public function update(UpdateAppointmentRequest $request, Appointment $appointment)
     {
         $data = $request->validated();
-        $appointment->update($data);
+        $appointment->load('customers')->update($data);
 
         return new AppointmentResource($appointment);
     }
