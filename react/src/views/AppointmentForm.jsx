@@ -106,14 +106,14 @@ export default function AppointmentForm() {
               onChange={ev => setAppointment({ ...appointment, customer_name: ev.target.value })}
               placeholder="Customer Name"
               readOnly={!!id}
-              className="read-only-input"
+              className={!!id ? "read-only-input" : ""}
             />
             <input
               value={appointment.customer_phone || ""}
               onChange={ev => setAppointment({ ...appointment, customer_phone: ev.target.value })}
               placeholder="Customer Phone"
               readOnly={!!id}
-              className="read-only-input"
+              className={!!id ? "read-only-input" : ""}
             />
             <input
               type="datetime-local"

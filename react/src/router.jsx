@@ -9,6 +9,8 @@ import Users from "./views/Users";
 import UserForm from "./views/UserForm";
 import Appointments from "./views/Appointments.jsx";
 import AppointmentForm from "./views/AppointmentForm.jsx";
+import Customers from "./views/Customers.jsx";
+import CustomerForm from "./views/CustomerForm.jsx";
 
 
 const router = createBrowserRouter([
@@ -47,6 +49,18 @@ const router = createBrowserRouter([
       {
         path:'/appointments/:id',
         element: <AppointmentForm  key="appointmentUpdate" />
+      },
+      {
+        path: '/customers',
+        element: <Customers />
+      },
+      {
+        path:'/customers/new',
+        element: <CustomerForm  key="customersCreate" />
+      },
+      {
+        path:'/customers/:id',
+        element: <CustomerForm  key="customersUpdate" />
       }
     ]
   },

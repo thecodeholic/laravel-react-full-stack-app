@@ -19,6 +19,8 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'phone' => $this->phone,
+            'instagram' => $this->instagram,
+            'status' => $this->status
         ];
     }
 }
