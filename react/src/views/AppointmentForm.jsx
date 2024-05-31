@@ -11,7 +11,9 @@ export default function AppointmentForm() {
     id: null,
     information: "",
     time: "",
-    type: ""
+    type: "",
+    customer_name: "",
+    customer_phone:""
   });
   const [errors, setErrors] = useState(null);
   const { setNotification } = useStateContext();
@@ -26,7 +28,7 @@ export default function AppointmentForm() {
     if (appointment.id) {
       axiosClient.put(`/appointments/${appointment.id}`, formattedAppointment)
         .then(() => {
-          setNotification("User has been updated successfully");
+          setNotification("Appointment has been updated successfully");
           navigate('/appointments');
         })
         .catch(err => {
@@ -38,7 +40,7 @@ export default function AppointmentForm() {
     } else {
       axiosClient.post(`/appointments/`, formattedAppointment)
         .then(() => {
-          setNotification("User has been created successfully");
+          setNotification("Appointment has been created successfully");
           navigate('/appointments');
         })
         .catch(err => {
@@ -94,6 +96,16 @@ export default function AppointmentForm() {
         )}
         {!loading && (
           <form onSubmit={onSubmit}>
+            <input
+              value={appointment.customer_name || ""}
+              onChange={ev => setAppointment({ ...appointment, customer_name: ev.target.value })}
+              placeholder="Customer Name"
+            />
+            <input
+              value={appointment.customer_phone || ""}
+              onChange={ev => setAppointment({ ...appointment, customer_phone: ev.target.value })}
+              placeholder="Customer Phone"
+            />
             <input
               type="datetime-local"
               value={appointment.time || ""}

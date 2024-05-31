@@ -12,6 +12,6 @@ class Customer extends Model
     protected $fillable = ['phone', 'name'];
 
     public function appointments(){
-        return $this->belongsToMany(Appointment::class, 'customer_appointment');
+        return $this->belongsToMany(Appointment::class, 'customers_appointments');
     }
 }

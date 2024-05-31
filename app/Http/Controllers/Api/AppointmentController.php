@@ -31,9 +31,27 @@ class AppointmentController extends Controller
      */
     public function store(StoreAppointmentRequest $request)
     {
-        $data = $request->validated();
-        $appointment = Appointment::query()->create($data);
-        return response (new AppointmentResource($appointment), status:201);
+        $validated = $request->validate([
+            'information' => 'required|string|max:255',
+            'time' => 'required|date_format:d-m-Y H:i',
+            'type' => 'required|string',
+            'customer_name' => 'required|string|max:255',
+            'customer_phone' => 'required|string|max:20',
+        ]);
+
+        // Create or find the customer
+        $customer = Customer::firstOrCreate(
+            ['phone' => $validated['customer_phone']],
+            ['name' => $validated['customer_name']]
+        );
+
+        // Create the appointment
+        $appointment = Appointment::create($validated);
+
+        // Attach the customer to the appointment
+        $appointment->customers()->attach($customer->id);
+
+        return new AppointmentResource($appointment);
     }
 
     /**
