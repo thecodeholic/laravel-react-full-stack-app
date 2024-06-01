@@ -49,9 +49,9 @@ export default function Appointments() {
         <table>
           <thead>
           <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Phone Number</th>
-            <th>Id</th>
             <th>Time</th>
             <th>Information</th>
             <th>Type</th>
@@ -69,9 +69,9 @@ export default function Appointments() {
             <tbody>
             {appointments.map(appointment => (
               <tr key={appointment.id}>
+                <td>{appointment.id}</td>
                 <td>{appointment.customers?.[0]?.name || 'N/A'}</td>
                 <td>{appointment.customers?.[0]?.phone || 'N/A'}</td>
-                <td>{appointment.id}</td>
                 <td>{appointment.time}</td>
                 <td>{appointment.information}</td>
                 <td>{appointment.type}</td>

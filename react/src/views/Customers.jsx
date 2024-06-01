@@ -53,6 +53,7 @@ export default function Customers() {
             <th>Phone Number</th>
             <th>Instagram</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
           </thead>
           {loading && <tbody>
